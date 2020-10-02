@@ -12,6 +12,10 @@ import java.security.KeyStore;
 public class HttpClient {
     private String url;
 
+
+    /**
+     * Crea la conexión SSL segura, y la url dada una variable de entorno o localmente.
+     */
     public HttpClient() {
         this.url = "https://"+getHostPort();
         //this.url = "https://ec2-54-196-253-253.compute-1.amazonaws.com:7000";
@@ -19,6 +23,10 @@ public class HttpClient {
         validateSSL();
     }
 
+    /**
+     * Obtiene la ip y puerto (ip:port) de una variable de entorno o retorna localhost:4444 por defecto
+     * @return El nuevo host con el que se va a trabajar
+     */
     private static String getHostPort() {
         if (System.getenv("HOSTPORT") != null) {
             System.out.println(System.getenv("HOSTPORT"));
@@ -28,6 +36,10 @@ public class HttpClient {
         return "localhost:4444";
     }
 
+    /**
+     * Obtiene los mensajes de la url asociada
+     * @return Los mensajes de la url
+     */
     public String getMessages() {
         try {
             URL siteURL = new URL(this.url + "/messages");
@@ -46,6 +58,10 @@ public class HttpClient {
         return null;
     }
 
+    /**
+     * Añade un mensaje a la url asociada
+     * @return El mensaje de respuesta al añadir
+     */
     public String addMessage(String message) {
         try {
             URL siteURL = new URL(this.url + "/messages");
@@ -71,6 +87,9 @@ public class HttpClient {
         return null;
     }
 
+    /**
+     * Realiza la conexión SSL de manera segura
+     */
     public void validateSSL() {
         try {
             // Create a file and a password representation
@@ -98,8 +117,8 @@ public class HttpClient {
             SSLContext sslContext = SSLContext.getInstance("TLS");
             sslContext.init(null, tmf.getTrustManagers(), null);
             SSLContext.setDefault(sslContext);
-            javax.net.ssl.HttpsURLConnection.setDefaultHostnameVerifier(
-                    (hostname, sslSession) -> true);
+            /*javax.net.ssl.HttpsURLConnection.setDefaultHostnameVerifier(
+                    (hostname, sslSession) -> true);*/
         } catch (Exception e) {
             e.printStackTrace();
         }

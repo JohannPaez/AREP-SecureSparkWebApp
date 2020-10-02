@@ -9,6 +9,9 @@ import org.bouncycastle.util.encoders.Hex;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+
+import spark.Request;
+import spark.Response;
 import spark.staticfiles.StaticFilesConfiguration;
 
 import static spark.Spark.*;
@@ -34,10 +37,8 @@ public class SparkWebServer {
 		//secure("keystoresLocal/ecikeystore.p12", "prueba123", null, null);
 		System.out.println("Paso secure");
 		before("protected/*", (request, response) -> {
-			request.session(true);
-			if (request.session().isNew()) {
-				request.session().attribute("isLogin",false);
-			}
+			System.out.println("protected/*");
+			handle(request);
 			boolean logged = request.session().attribute("isLogin");
 			if (!logged) {
 				halt(401, "<h1> 401 Unauthorized </h1>");
@@ -47,10 +48,7 @@ public class SparkWebServer {
 
 		before("/login.html",((request, response) -> {
 			System.out.println("Get /Login.html");
-			request.session(true);
-			if (request.session().isNew()) {
-				request.session().attribute("isLogin",false);
-			}
+			handle(request);
 			boolean isLogged =request.session().attribute("isLogin");
 			if (isLogged) {
 				response.redirect("protected/messages.html");
@@ -63,8 +61,9 @@ public class SparkWebServer {
 				staticHandler.consume(request.raw(), response.raw()));
 
 		get("/isLogin", (request, response) -> {
-			response.header("Content-Type", "application/json");
-			return String.valueOf(request.session().attribute("isLogin") != null);
+			handle(request);
+			boolean session = request.session().attribute("isLogin");
+			return String.valueOf(session);
 		});
 
 		get("/protected/logout", (request, response) -> {
@@ -95,6 +94,11 @@ public class SparkWebServer {
 
 	}
 
+	/**
+	 * Cifra un texto con SHA-256 y la retorna
+	 * @param password Es la contraseña a Cifrar
+	 * @return La contraseña cifrada
+	 */
 	private static String encryptPassword(String password) {
 		MessageDigest digest = null;
 		String sha256hex = password;
@@ -120,4 +124,15 @@ public class SparkWebServer {
 		return 4567;
 	}
 
+	/**
+	 * Crea una nueva sesisión y crea el atribute login si la sesión es nueva.
+	 * @param request Es la solicitud a mirar
+	 */
+	private static void handle(Request request) {
+		System.out.println("REQUEST " + request.pathInfo());
+		request.session(true);
+		if (request.session().isNew()) {
+			request.session().attribute("isLogin", false);
+		}
+	}
 }
