@@ -26,10 +26,13 @@ public class SparkWebServer {
 	 */
 	public static void main(String... args) {
 		HttpClient services = new HttpClient();
+		int puerto = getPort();
 		port(getPort());
+		System.out.println("Puerto corriendo actualmente: "  + puerto);
 		//staticFiles.location("/public");
 		secure("keystores/SecureSparkServiceApp.p12", "prueba123", null, null);
-
+		//secure("keystoresLocal/ecikeystore.p12", "prueba123", null, null);
+		System.out.println("Paso secure");
 		before("protected/*", (request, response) -> {
 			request.session(true);
 			if (request.session().isNew()) {
@@ -42,7 +45,8 @@ public class SparkWebServer {
 			}
 		});
 
-		before("/login.html",((request, response) ->{
+		before("/login.html",((request, response) -> {
+			System.out.println("Get /Login.html");
 			request.session(true);
 			if (request.session().isNew()) {
 				request.session().attribute("isLogin",false);

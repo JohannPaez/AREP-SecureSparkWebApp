@@ -10,4 +10,4 @@ COPY /target/dependency /ServiceSparkApp/bin/dependency
 RUN mkdir keystores
 COPY keystores/* /ServiceSparkApp/bin/keystores/
 
-CMD ["java","-cp","./target/classes:./target/dependency/*","com.arep.SparkWebServer"]
+CMD ["java","-cp","./classes:./dependency/*","com.arep.SparkWebServer"]

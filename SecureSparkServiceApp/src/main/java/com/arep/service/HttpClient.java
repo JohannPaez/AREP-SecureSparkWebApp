@@ -13,9 +13,19 @@ public class HttpClient {
     private String url;
 
     public HttpClient() {
-        this.url = "https://"+System.getenv("HOSTPORT");
+        this.url = "https://"+getHostPort();
+        //this.url = "https://ec2-54-196-253-253.compute-1.amazonaws.com:7000";
         //this.url = "https://localhost:4444";
         validateSSL();
+    }
+
+    private static String getHostPort() {
+        if (System.getenv("HOSTPORT") != null) {
+            System.out.println(System.getenv("HOSTPORT"));
+            return System.getenv("HOSTPORT");
+        }
+        System.out.println("localhost:4444");
+        return "localhost:4444";
     }
 
     public String getMessages() {

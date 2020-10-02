@@ -26,15 +26,19 @@ public class SparkWebServer {
 	public static void main(String... args) {
 		CopyOnWriteArrayList<Message> messages = new CopyOnWriteArrayList<>();
 		port(getPort());
+		System.out.println("Puerto corriendo actualmente: "  + getPort());
 		// Local
 		//secure("keystores/SparkServiceAppKeyStore.p12", "prueba123", null, null);
 		// AWS
 		secure("keystores/SparkServiceAppKeyStore.p12", "prueba123", "keystores/SecureTrustStore", "prueba123");
+		System.out.println("Paso secure");
 		get("/service", (req, res) -> {
+			System.out.println("Get /service");
 			return "Este es el servicio de respuesta de mensajes!";
 		});
 		
-		get("/messages", (req, res) -> {				
+		get("/messages", (req, res) -> {	
+			System.out.println("Get /messages");
 			return new Gson().toJson(messages);
 		});
 		
