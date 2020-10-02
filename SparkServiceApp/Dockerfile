@@ -3,6 +3,7 @@ FROM openjdk:8
 WORKDIR /ServiceSparkApp/bin
 
 ENV PORT 6000
+ENV TZ America/Bogota
 
 COPY /target/classes /ServiceSparkApp/bin/classes
 COPY /target/dependency /ServiceSparkApp/bin/dependency

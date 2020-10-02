@@ -3,6 +3,7 @@ FROM openjdk:8
 WORKDIR /SecureSparkApp/bin
 
 ENV PORT 6000
+ENV TZ America/Bogota
 
 COPY /target/classes /SecureSparkApp/bin/classes
 COPY /target/dependency /SecureSparkApp/bin/dependency
