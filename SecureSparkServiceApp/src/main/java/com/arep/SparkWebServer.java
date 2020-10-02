@@ -28,7 +28,7 @@ public class SparkWebServer {
 		HttpClient services = new HttpClient();
 		port(getPort());
 		//staticFiles.location("/public");
-		secure("keystores/ecikeystore.p12", "prueba123", "keystores/ServTrustStore", "prueba123");
+		secure("keystores/SecureSparkServiceApp.p12", "prueba123", null, null);
 
 		before("protected/*", (request, response) -> {
 			request.session(true);

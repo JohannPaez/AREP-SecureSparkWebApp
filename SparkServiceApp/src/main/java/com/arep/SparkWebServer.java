@@ -26,7 +26,10 @@ public class SparkWebServer {
 	public static void main(String... args) {
 		CopyOnWriteArrayList<Message> messages = new CopyOnWriteArrayList<>();
 		port(getPort());
-		secure("keystores/SparkServiceAppKeyStore.p12", "prueba123", null, null);
+		// Local
+		//secure("keystores/SparkServiceAppKeyStore.p12", "prueba123", null, null);
+		// AWS
+		secure("keystores/SparkServiceAppKeyStore.p12", "prueba123", "keystores/SecureTrustStore", "prueba123");
 		get("/service", (req, res) -> {
 			return "Este es el servicio de respuesta de mensajes!";
 		});
