@@ -67,7 +67,7 @@ Si quiere correr el proyecto con docker, utilice los siguientes comandos para co
 - https://ec2-3-84-114-195.compute-1.amazonaws.com:8000/.
 
 **Repositorio Docker**: El repositorio de Docker se encuentra disponible en:
-- https://hub.docker.com/repository/docker/najoh2907/securesparkserviceapp.
+- https://hub.docker.com/r/najoh2907/securesparkserviceapp.
 
 
 ### Dentro del proyecto SparkServiceApp
@@ -86,7 +86,7 @@ Si quiere correr el proyecto con docker, utilice los siguientes comandos para co
 - https://ec2-54-196-253-253.compute-1.amazonaws.com:7000/messages.
 
 **Repositorio Docker**: El repositorio de Docker se encuentra disponible en:
-- https://hub.docker.com/repository/docker/najoh2907/sparkserviceapp.
+- https://hub.docker.com/r/najoh2907/sparkserviceapp.
 
  ## EndPoints Disponibles 
  
