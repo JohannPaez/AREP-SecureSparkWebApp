@@ -63,9 +63,11 @@ Si quiere correr el proyecto con docker, utilice los siguientes comandos para co
     
     docker run -dp port_machine:port_container -e HOSTPORT="ip_other_machine"+ ":" + "port_other_machine" najoh2907/securesparkserviceapp
     
-**Importante**: Si sólo deseas utilizar el aplicativo, puedes hacerlo accediendo al siguiente enlace https://ec2-3-84-114-195.compute-1.amazonaws.com:8000/.
+**Importante**: Si sólo deseas utilizar el aplicativo, puedes hacerlo accediendo al siguiente enlace:
+- https://ec2-3-84-114-195.compute-1.amazonaws.com:8000/.
 
-**Repositorio Docker**: El repositorio de Docker se encuentra disponible en https://github.com/JohannPaez/AREP-SecureSparkServiceApp.
+**Repositorio Docker**: El repositorio de Docker se encuentra disponible en:
+- https://hub.docker.com/repository/docker/najoh2907/securesparkserviceapp.
 
 
 ### Dentro del proyecto SparkServiceApp
@@ -80,9 +82,11 @@ Si quiere correr el proyecto con docker, utilice los siguientes comandos para co
     
     docker run -dp port_machine:port_container najoh2907/sparkserviceapp
                            
-**Importante**: Si sólo deseas utilizar el aplicativo, puedes hacerlo accediendo al siguiente enlace https://ec2-54-196-253-253.compute-1.amazonaws.com:7000/messages.
+**Importante**: Si sólo deseas utilizar el aplicativo, puedes hacerlo accediendo al siguiente enlace:
+- https://ec2-54-196-253-253.compute-1.amazonaws.com:7000/messages.
 
-**Repositorio Docker**: El repositorio de Docker se encuentra disponible en https://hub.docker.com/repository/docker/najoh2907/sparkserviceapp.
+**Repositorio Docker**: El repositorio de Docker se encuentra disponible en:
+- https://hub.docker.com/repository/docker/najoh2907/sparkserviceapp.
 
  ## EndPoints Disponibles 
  
@@ -144,6 +148,12 @@ Conexión con el servidor funcional para usuarios autenticados.
 Instancias de ejecución en AWS.
 
 ![](Images/Instancias.png)
+
+## Video Demostrativo
+
+El video demostrativo de la conexión segura mediante HTTPS, está disponible en:
+
+- https://www.youtube.com/watch?v=6_sQU8FxU3M&ab_channel=SebastianP%C3%A1ez.
 
 
 ## Construido con
