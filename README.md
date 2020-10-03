@@ -67,7 +67,7 @@ Si quiere correr el proyecto con docker, utilice los siguientes comandos para co
 - https://ec2-3-84-114-195.compute-1.amazonaws.com:8000/.
    - Datos de logeo:
       - Correo: johann@mail.com
-      - Contraseña: prueba123
+      - Contraseña: johann123
 
 **Repositorio Docker**: El repositorio de Docker se encuentra disponible en:
 - https://hub.docker.com/r/najoh2907/securesparkserviceapp.
